@@ -79,7 +79,14 @@ export default class PostControlador {
             return elemento.id === id; 
         })
 
-        postIndice.splice(postIndice, 1);
+
+        if(postIndice === -1) {
+            return res.status(404).json({
+                mensagem: 'A postagem não existe'
+            })
+        }
+
+        posts.splice(postIndice, 1);
 
 
         return res.status(2024).send();
